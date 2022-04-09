@@ -1,0 +1,13 @@
+#modal__header,
+#modal__description {
+  color: black;
+}
+
+#modal__button {
+  display: flex;
+  margin: 0 auto 1rem auto;
+}
+
+#modal__description {
+  text-align: justify;
+}
