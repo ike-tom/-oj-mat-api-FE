@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRef, useState } from 'react';
 import { Button, FormControl, InputGroup, Form, Container, Row, Col } from 'react-bootstrap';
-import './app.css';
+import './App.css';
 
 import { SERVER_URL } from './URLs';
 

@@ -1,6 +1,6 @@
 import { makeApiUrl } from './makeApiUrl';
 
-export const readAll = (key: string) => {
+const readAll = (key: string) => {
   const apiUrl = makeApiUrl(key);
 
   return fetch(apiUrl)
