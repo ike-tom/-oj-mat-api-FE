@@ -29,3 +29,7 @@ body {
   height: 250px;
   resize: none;
 }
+
+#form__submit-spinner {
+  margin-right: 1rem;
+}

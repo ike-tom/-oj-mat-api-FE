@@ -1,6 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRef, useState } from 'react';
-import { Button, FormControl, InputGroup, Form, Container, Row, Col } from 'react-bootstrap';
+import {
+  Button,
+  FormControl,
+  InputGroup,
+  Form,
+  Container,
+  Row,
+  Col,
+  Spinner
+} from 'react-bootstrap';
 import './App.css';
 
 import { SERVER_URL } from './URLs';
@@ -11,9 +20,13 @@ import InformationModal from './components/InformationModal/InformationModal';
 
 function App() {
   const [text, setText] = useState<string[] | string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
   const showResponse = async (inputValue: string) => {
+    setIsLoading(true);
     setText(JSON.stringify(await readAll(inputValue), null, '\t'));
+    setIsLoading(false);
   };
 
   return (
@@ -39,9 +52,23 @@ function App() {
               </Col>
               <Col xs={12} lg={2} id="form__submit-button-container">
                 <div className="d-grid gap-2">
-                  <Button variant="danger" id="form__submit-button" type="submit">
-                    REQUEST
-                  </Button>
+                  {isLoading ? (
+                    <Button variant="danger" id="form__submit-button" type="submit" disabled>
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                        id="form__submit-spinner"
+                      />
+                      REQUEST
+                    </Button>
+                  ) : (
+                    <Button variant="danger" id="form__submit-button" type="submit">
+                      REQUEST
+                    </Button>
+                  )}
                 </div>
               </Col>
             </InputGroup>
